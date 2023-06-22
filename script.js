@@ -37,12 +37,8 @@
 //   max = Math.floor(max);
 //   return Math.floor(Math.random() * (max - min + 1) + min);
 
-  let player1 = {
-    name: "nasa1",
-    hull :'20',
-    firepower: '5',
-    accuracy: '7',
-  };
+
+
 
 //   let alien1 = {
 //     name: "Yellow Star",
@@ -52,13 +48,66 @@
 //       image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif"
 //   }
 
-  let alien1 = {
+
+
+  ///***   Round Logic */
+// A game round would look like this:
+
+//1. You attack the first alien ship
+// If the ship survives, it attacks you
+        ////....// If you destroy the ship, you have the option to attack the next ship or to retreat
+/// Ans: USS Assembly players --nasa1,nasa2, nasa3, etc and Aliens -- alien1,alien2,alien3 etc
+
+// Actor Object
+
+let player1 = {
+    name: "nasa1",
+    hull :20,
+    firepower: 5,
+    accuracy: 7,
+    everyPlayerAttack : function(alienObject) {
+        console.log("player1 attacks alien1")
+        alienObject.hull =  alienObject.hull - player1.firepower
+        console.log(alienObject.hull)
+    } 
+  };
+
+
+
+// (A) Write a fxn called everyPlayerAttack that attacks  alien hull(batteryLife) minus player one's firepower.  Write an IF/ELSE statement that returns "Alien dies" if alien hull ( batterylife) is less than or equal to zero.Else returns "Alien survives - You are being attacked"
+
+
+
+ //Action that the actor performs
+// const everyPlayerAttack = () => {
+//     console.log("player1 attacks Alien1")
+//     alien1.hull =  alien1.hull - player1.firepower
+//     console.log(alien1.hull)
+// } 
+
+// player1.everyPlayerAttack()
+
+//(B) Write a fxn called everyAlienAttack that attacks player1's hull(batteryLife) minus alien's firepower. Write an IF/ELSE statement that returns " player1 survives" if player1's hull is greater than zero. ELSE return "player1 dies" if hull(batteryLife) is less than zero
+
+let alien1 = {
     name: "Yellow Star",
     hull : 3,
-    firePower : 2, 
-   accuracy :  .6,
-      image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif"
+    firePower : 4, 
+   accuracy :  .8,
+      image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif",
+      
+ everyAlienAttack : function (playerObject) {
+    console.log("Alien1 attacks player1 ")
+    playerObject.hull = playerObject.hull - alien1.firePower
+    console.log(alien1.hull)
+} 
   }
+
+player1.everyPlayerAttack(alien1)
+alien1.everyAlienAttack(player1)
+
+
+
 
 //    let allAliens ={alien1,alien2,alien3,alien4,alien5,alien6}
 
@@ -83,6 +132,9 @@
 
 //2. If you survive, you attack the ship again
 // 4.If it survives, it attacks you again ... etc
+  //Create a fxn named Attack, that returns the difference when you are  hit i.e. hull(hitpoint/battery life) - firepower(Amount f damage to the hull )
+  
+  
 
 //3. If you retreat, the game is over, perhaps leaving the game open for further developments or options
 //. You win the game if you destroy all of the aliens
