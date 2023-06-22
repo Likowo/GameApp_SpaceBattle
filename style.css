@@ -1,0 +1,32 @@
+.spaceArena{
+    border: solid 4px black;
+    height: 420px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.uSSAssembly{
+    border: solid 3px red;
+    border-radius: 50%;
+    height: 120px;;
+    width: 120px;
+    margin-top: 10%;
+}
+.aliens{
+    border: solid 3px blue;
+    border-radius: 70%;
+    height: 120px;
+    width: 120px;
+    margin-top: 10%;
+}
+
+.actions{
+   border: solid gold;
+   margin-top: 120%;
+   display: flex;
+   height: 100px;
+   width: 280px;
+
+}
+
