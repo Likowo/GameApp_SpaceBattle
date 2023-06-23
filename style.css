@@ -1,24 +1,44 @@
 .spaceArena{
     border: solid 4px black;
-    height: 420px;
+    height: 850px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    background-image: url('https://cutewallpaper.org/21/space-gif-wallpaper/Space-Travel-Animated-Wallpaper-Httpwww.desktopanimated.com-GIF.gif');
 }
 
 .uSSAssembly{
-    border: solid 3px red;
+    /* border: solid 3px red; */
+    border-radius: 50%;
+    height: 120px;;
+    width: 120px;
+    margin-top: 10%;
+    color: brown;
+}
+
+.nasa{
+    /* border: solid 3px red; */
     border-radius: 50%;
     height: 120px;;
     width: 120px;
     margin-top: 10%;
 }
+
+
 .aliens{
-    border: solid 3px blue;
+    /* border: solid 3px blue; */
     border-radius: 70%;
     height: 120px;
     width: 120px;
     margin-top: 10%;
+    color: yellow;
+}
+
+.alienShip{
+    /* border: solid 3px blue; */
+    border-radius: 100%;
+    height: 125px;
+    width: 125px;
 }
 
 .actions{
@@ -29,4 +49,5 @@
    width: 280px;
 
 }
+
 

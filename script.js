@@ -61,16 +61,20 @@
 // Actor Object
 // (A) Write a fxn called everyPlayerAttack that attacks  alien hull(batteryLife) minus player one's firepower.  Write an IF/ELSE statement that returns "Alien dies -player1 wins" if alien hull ( batterylife) is less than or equal to zero.Else returns "Alien survives - You are being attacked"
 
-
+    //How to generate random numbers
+const generateRandomNum = (min, max) => {
+  let randomNum = Math.floor(Math.random() * (max - min) + min);
+  return randomNum;
+};
 
 
 let player1 = {
-    name: "nasa1",
+    name: "Nasa1",
     hull :20,
     firepower: 5,
     accuracy: 7,
     everyPlayerAttack : function(alienObject) {
-        console.log("player1 attacks alien1")
+        console.log("Nasa1 attacks alien1")
         alienObject.hull =  alienObject.hull - player1.firepower
         console.log(alienObject.hull)
     } 
@@ -93,31 +97,30 @@ let player1 = {
 
 let alien1 = {
     name: "Yellow Star",
-    hull : 3,
-    firePower : 4, 
-   accuracy :  .8,
+    hull : generateRandomNum(3,6),
+    firePower: generateRandomNum(2,4),
+    accuracy: generateRandomNum(6,8),
       image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif",
 
         everyAlienAttack : function (playerObject) {
-    console.log("Alien1 attacks player1 ")
+    console.log("Alien1 attacks Nasa1 ")
     playerObject.hull = playerObject.hull - alien1.firePower
     console.log( playerObject.hull)
 } 
   }
-
-        
+   
 let alien2 = {
     name: "Spinning plate",
-    hull : 3,
-    firePower : 4, 
-   accuracy :  .8,
+    hull : generateRandomNum(3,6),
+    firePower: generateRandomNum(2,4),
+    accuracy: generateRandomNum(6,8),
       image : "https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif",
 }
 let alien3 = {
     name: "Radiator",
-    hull : 3,
-    firePower : 4, 
-   accuracy :  .8,
+    hull : generateRandomNum(5,15),
+    firePower: generateRandomNum(2,4),
+    accuracy: generateRandomNum(6,8),
       image : "https://media2.giphy.com/media/RQOUFIDRRG3O9lhLsd/giphy.gif?cid=6c09b952uxvj0rdbidv5rppa6xuud4nhk3j5yzikqyn6ic5h&rid=giphy.gif&ct=s",
 }
 
@@ -125,11 +128,19 @@ let alien3 = {
 // player1.everyPlayerAttack(alien1)
 // alien1.everyAlienAttack(player1)
 
+//   Alien counter //
+let allAliens = [alien1,alien2,alien3]
+let alienAttacking = alien1;
+let counter = 0 //counter starting at zero means the first alien is in battle
+ console.log(counter,":Counter")
+ console.log(`${alienAttacking.name}`, ":Alien in Battle ")
+ console.log("Current Opponent:",alienAttacking)
+
 let battleOn = true
 while (battleOn) {
     if ( alien1.hull >=1  && alien1.hull <= 6) {
         player1.everyPlayerAttack(alien1)
-        console.log('Alien dies - Player1 wins')
+        console.log('Alien dies - Nasa1 wins')
           console.log('game about to end')
       } else {
         console.log('Alien survives - You are being attacked')
@@ -140,21 +151,12 @@ while (battleOn) {
 //*** Switching Aliens when one dies***
 // Write a fxn named switchAlien that reolaces an alein with a new one when it is destroyed ***/
 
-//   Alien counter //
-let allAliens = [alien1,alien2,alien3]
-let alienAttacking = alien1;
-let counter = 0 //counter starting at zero means the first alien is in battle
- console.log(counter,":Counter")
- console.log(`${alienAttacking.name}`, ":Alien Name")
- console.log("Current Opponent:",alienAttacking)
-
-
 const switchAlien = () => {
     console.log(" New Alien");
-    let newAlien = document.querySelector(".alienShip")
+    let newAlien = document.querySelector(".aliens")
     let newAlienImg = document.createElement("img");
     newAlienImg.setAttribute("src",allAliens[counter]);
-    newAlienImg.setAttribute("class","alienShip");
+    newAlienImg.setAttribute("class","aliens");
     newAlien.replaceWith(newAlienImg)   
 };
 
@@ -164,9 +166,9 @@ const switchAlien = () => {
 while (battleOn) {
     if ( player1.hull >= 1 && player1.hull <= 20 ) {
         alien1.everyAlienAttack(player1)
-        console.log('player1 survives')
+        console.log('Nasa1 survives')
       } else {
-        console.log('player1 dies')
+        console.log('Nasa1 dies')
         console.log('game about to end')
         battleOn = false
       }     
