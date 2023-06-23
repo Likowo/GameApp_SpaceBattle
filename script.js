@@ -50,7 +50,7 @@
 
 
 
-  ///***   Round Logic */
+  ///***   Round Logic == Remember every game is built in a While Loop *******/
 // A game round would look like this:
 
 //1. You attack the first alien ship
@@ -59,6 +59,10 @@
 /// Ans: USS Assembly players --nasa1,nasa2, nasa3, etc and Aliens -- alien1,alien2,alien3 etc
 
 // Actor Object
+// (A) Write a fxn called everyPlayerAttack that attacks  alien hull(batteryLife) minus player one's firepower.  Write an IF/ELSE statement that returns "Alien dies -player1 wins" if alien hull ( batterylife) is less than or equal to zero.Else returns "Alien survives - You are being attacked"
+
+
+
 
 let player1 = {
     name: "nasa1",
@@ -72,13 +76,11 @@ let player1 = {
     } 
   };
 
+ // Now put your logic in a While Loop so it runs until one of the fighters is destroyed
+   //***The while loop loops through a block of code as long as a specified condition is true. Synthax is while(condition){ code block to be executed } * scroll down to see the While loop ****/
 
 
-// (A) Write a fxn called everyPlayerAttack that attacks  alien hull(batteryLife) minus player one's firepower.  Write an IF/ELSE statement that returns "Alien dies" if alien hull ( batterylife) is less than or equal to zero.Else returns "Alien survives - You are being attacked"
-
-
-
- //Action that the actor performs
+ //Action that the actor performs ********
 // const everyPlayerAttack = () => {
 //     console.log("player1 attacks Alien1")
 //     alien1.hull =  alien1.hull - player1.firepower
@@ -99,22 +101,54 @@ let alien1 = {
  everyAlienAttack : function (playerObject) {
     console.log("Alien1 attacks player1 ")
     playerObject.hull = playerObject.hull - alien1.firePower
-    console.log(alien1.hull)
+    console.log( playerObject.hull)
 } 
   }
 
-player1.everyPlayerAttack(alien1)
-alien1.everyAlienAttack(player1)
+// player1.everyPlayerAttack(alien1)
+// alien1.everyAlienAttack(player1)
 
+let battleOn = true
+while (battleOn) {
+    if ( alien1.hull >=1  && alien1.hull <= 6) {
+        player1.everyPlayerAttack(alien1)
+        console.log('Alien dies - Player1 wins')
+          console.log('game about to end')
+      } else {
+        console.log('Alien survives - You are being attacked')
+        battleOn = false
+      }     
+}
+
+//**** second While loop - for when player1 dies */
+ battleOn = true
+while (battleOn) {
+    if ( player1.hull >= 1 && player1.hull <= 20 ) {
+        alien1.everyAlienAttack(player1)
+        console.log('player1 survives')
+      } else {
+        console.log('player1 dies')
+        console.log('game about to end')
+        battleOn = false
+      }     
+}
+
+
+
+// if ( alien1.hull <= 0 && player1.hull >0) {
+//     console.log( 'Alien dies')
+//   } else {
+//     console.log("Alien survives - You are being attacked")
+//   }     
 
 
 
 //    let allAliens ={alien1,alien2,alien3,alien4,alien5,alien6}
 
   let alienAttacking = alien1;
-  let counter = 0 //counter starting at one means the first alien is in battle
+  let counter = 0 //counter starting at zero means the first alien is in battle
   console.log(counter,":Counter")
-  console.log(`${alienAttacking.name}`)
+  console.log(`${alienAttacking.name}`, ":Alien Name")
 
 
         const newRound = () => {
@@ -132,7 +166,7 @@ alien1.everyAlienAttack(player1)
 
 //2. If you survive, you attack the ship again
 // 4.If it survives, it attacks you again ... etc
-  //Create a fxn named Attack, that returns the difference when you are  hit i.e. hull(hitpoint/battery life) - firepower(Amount f damage to the hull )
+  // i.e. Create a fxn named Attack, that returns the difference when you are  hit i.e. hull(hitpoint/battery life) - firepower(Amount f damage to the hull )
   
   
 
@@ -181,11 +215,11 @@ alien1.everyAlienAttack(player1)
     //  }
          // below .7 is a hit while above .7( e.g .71) is a miss
          
-         if (Math.random() < alienAttacking.accuracy) {
-             	console.log('You have been hit!');
-              } else {
-                console.log('You can attack')
-              }
+        //  if (Math.random() < alienAttacking.accuracy) {
+        //      	console.log('You have been hit!');
+        //       } else {
+        //         console.log('You can attack')
+        //       }
 
 //B) The alien ships should each have the following ranged properties determined randomly:using object Literal/Constructor.
 
@@ -233,3 +267,20 @@ alien1.everyAlienAttack(player1)
 // Avoid Creating a YAGNI (You aren't going to need it) - You should not try to add functionality until you need it.
 // Do the simplest thing that could possibly work.
 // Often, beginning something is an act of creative inspiration to find the simplest possible case. The first step is not necessarily a matter of logical deduction. Once you have a few 'clues' you can follow the trail of crumbs to a logical conclusion.
+
+
+//**** */ Actors and then actions ****/
+// A good rule of thumb is start with the actors and then the actions. What actors do we need? In this case, we need our spaceship and the alien spaceships. An action these ships can take is to attack something. Perhaps a ship object (an actor) could therefore have an attack method (an action).
+
+// A repeating action in the game is that these ships attack each other until one of them has been destroyed. This might necessitate a loop or multiple loops.
+
+
+
+
+// 👾 Start simpler than the instructions suggest
+// Keep these five things in mind when planning and coding your game:
+
+// Begin even simpler than the specifications suggest. In this case, perhaps just start with one alien ship instead of many alien ships, and get the code for one ship working first.
+// Root out any 'gotchas' that you really ought to foresee. In this case, will we really want nested loops -- one for a battle, one for iterating over aliens)? How will we exit one loop and then exit the parent loop? Perhaps keeping it to one loop somehow will help us avoid unnecessary difficulties.
+// When coding, form a solid and testable foundation before building upon it with more functionality. In this case, is there a bug where an alien can attack after it has been destroyed? Better fix that bug before increasing the complexity of the code.
+// When you have a piece of functionality tested and working, commit it. Try not to commit broken code. Unsure of when to commit? Commit when something works. You want to save working code.
