@@ -97,13 +97,30 @@ let alien1 = {
     firePower : 4, 
    accuracy :  .8,
       image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif",
-      
- everyAlienAttack : function (playerObject) {
+
+        everyAlienAttack : function (playerObject) {
     console.log("Alien1 attacks player1 ")
     playerObject.hull = playerObject.hull - alien1.firePower
     console.log( playerObject.hull)
 } 
   }
+
+        
+let alien2 = {
+    name: "Spinning plate",
+    hull : 3,
+    firePower : 4, 
+   accuracy :  .8,
+      image : "https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif",
+}
+let alien3 = {
+    name: "Radiator",
+    hull : 3,
+    firePower : 4, 
+   accuracy :  .8,
+      image : "https://media2.giphy.com/media/RQOUFIDRRG3O9lhLsd/giphy.gif?cid=6c09b952uxvj0rdbidv5rppa6xuud4nhk3j5yzikqyn6ic5h&rid=giphy.gif&ct=s",
+}
+
 
 // player1.everyPlayerAttack(alien1)
 // alien1.everyAlienAttack(player1)
@@ -119,6 +136,28 @@ while (battleOn) {
         battleOn = false
       }     
 }
+
+//*** Switching Aliens when one dies***
+// Write a fxn named switchAlien that reolaces an alein with a new one when it is destroyed ***/
+
+//   Alien counter //
+let allAliens = [alien1,alien2,alien3]
+let alienAttacking = alien1;
+let counter = 0 //counter starting at zero means the first alien is in battle
+ console.log(counter,":Counter")
+ console.log(`${alienAttacking.name}`, ":Alien Name")
+ console.log("Current Opponent:",alienAttacking)
+
+
+const switchAlien = () => {
+    console.log(" New Alien");
+    let newAlien = document.querySelector(".alienShip")
+    let newAlienImg = document.createElement("img");
+    newAlienImg.setAttribute("src",allAliens[counter]);
+    newAlienImg.setAttribute("class","alienShip");
+    newAlien.replaceWith(newAlienImg)   
+};
+
 
 //**** second While loop - for when player1 dies */
  battleOn = true
@@ -140,15 +179,6 @@ while (battleOn) {
 //   } else {
 //     console.log("Alien survives - You are being attacked")
 //   }     
-
-
-
-//    let allAliens ={alien1,alien2,alien3,alien4,alien5,alien6}
-
-  let alienAttacking = alien1;
-  let counter = 0 //counter starting at zero means the first alien is in battle
-  console.log(counter,":Counter")
-  console.log(`${alienAttacking.name}`, ":Alien Name")
 
 
         const newRound = () => {
