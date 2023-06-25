@@ -7,6 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <script src="script.js" async defer></script>
     </head>
     <body>
         <!-- gameBoard called spaceArena -->
@@ -17,9 +18,9 @@
                 <img src="https://cdn.dribbble.com/users/1531086/screenshots/3734269/nasa_badge_full_comp_02_2.gif" alt="" class="nasa">
                 <div class="actions">           
                   <span>USS Assembly</span>
-                <button onclick="shootTarget" >ATTACK NOW</button>
-                <button onclick="retreat"> RETREAT!</button>
-                <button onclick="cautionAlienShipUpfront"> WARNING!</button>
+                <button onclick="shootTarget()" >ATTACK NOW</button>
+                <button onclick="retreat()"> RETREAT!</button>
+                <button onclick="warn()"> WARNING!</button>
               </div>  
                 
             </div>
@@ -27,7 +28,7 @@
             <div class="aliens">
                 <img src="https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif" alt="" class="alienShip">
                <div class="actions">
-                <button onclick="react">ATTACK BACK</button>
+                <!-- <button onclick="react">ATTACK BACK</button> -->
                 <span> Alien Ship </span>
                </div> 
                
@@ -40,7 +41,7 @@
 
 
         
-        <script src="script.js" async defer></script>
+       
     </body>
 </html>
 

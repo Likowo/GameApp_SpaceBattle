@@ -38,18 +38,6 @@
 //   return Math.floor(Math.random() * (max - min + 1) + min);
 
 
-
-
-//   let alien1 = {
-//     name: "Yellow Star",
-//     hull : generateRandomNum (3, 6),
-//     firePower : generateRandomNum (2, 4),
-//    accuracy :  generateRandomNum (6, 8),
-//       image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif"
-//   }
-
-
-
   ///***   Round Logic == Remember every game is built in a While Loop *******/
 // A game round would look like this:
 
@@ -57,6 +45,27 @@
 // If the ship survives, it attacks you
         ////....// If you destroy the ship, you have the option to attack the next ship or to retreat
 /// Ans: USS Assembly players --nasa1,nasa2, nasa3, etc and Aliens -- alien1,alien2,alien3 etc
+
+
+
+//* create fxn for buttons **********************************/
+
+  // Attack button
+const shootTarget = () => {
+  alert('Battle ON!')
+  player1.everyPlayerAttack()
+}
+
+  //Retreat button
+const retreat = () => {
+  alert('Game Over')
+  location.reload()
+ }
+  // Warning button
+const warn = () => {
+  alert('Caution !! Alien Ship Upfront') 
+ }
+
 
 // Actor Object
 // (A) Write a fxn called everyPlayerAttack that attacks  alien hull(batteryLife) minus player one's firepower.  Write an IF/ELSE statement that returns "Alien dies -player1 wins" if alien hull ( batterylife) is less than or equal to zero.Else returns "Alien survives - You are being attacked"
@@ -67,16 +76,28 @@ const generateRandomNum = (min, max) => {
   return randomNum;
 };
 
-
 let player1 = {
-    name: "Nasa1",
+    name: "nasa1",
     hull :20,
     firepower: 5,
     accuracy: 7,
-    everyPlayerAttack : function(alienObject) {
-        console.log("Nasa1 attacks alien1")
-        alienObject.hull =  alienObject.hull - player1.firepower
-        console.log(alienObject.hull)
+    everyPlayerAttack : function() {
+        console.log(`Nasa1 attacks ${alienAttacking.name}`)
+        alienAttacking.hull =  alienAttacking.hull - player1.firepower
+        console.log(`${alienAttacking.name } has hull of ${alienAttacking.hull}`)
+        if(alienAttacking.hull <= 0){
+          console.log(`%c ${alienAttacking.name} dies`, "color : red ")
+          if( counter <5){
+            counter++
+            switchAlien()
+         }else {
+            retreat()
+          }
+         
+        }else {
+          console.log(`${alienAttacking.name} survives, you are being attacked`)
+          alienAttacking.everyAlienAttack()
+        }
     } 
   };
 
@@ -101,11 +122,10 @@ let alien1 = {
     firePower: generateRandomNum(2,4),
     accuracy: generateRandomNum(6,8),
       image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif",
-
-        everyAlienAttack : function (playerObject) {
+        everyAlienAttack : function () {
     console.log("Alien1 attacks Nasa1 ")
-    playerObject.hull = playerObject.hull - alien1.firePower
-    console.log( playerObject.hull)
+    player1.hull = player1.hull - alien1.firePower
+    console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
 } 
   }
    
@@ -115,64 +135,145 @@ let alien2 = {
     firePower: generateRandomNum(2,4),
     accuracy: generateRandomNum(6,8),
       image : "https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif",
+      everyAlienAttack : function () {
+        console.log("Alien1 attacks Nasa1 ")
+        player1.hull = player1.hull - alien1.firePower
+        console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
+    } 
+    
 }
+
 let alien3 = {
     name: "Radiator",
     hull : generateRandomNum(5,15),
     firePower: generateRandomNum(2,4),
     accuracy: generateRandomNum(6,8),
       image : "https://media2.giphy.com/media/RQOUFIDRRG3O9lhLsd/giphy.gif?cid=6c09b952uxvj0rdbidv5rppa6xuud4nhk3j5yzikqyn6ic5h&rid=giphy.gif&ct=s",
+      everyAlienAttack : function () {
+        console.log(`${alienAttacking.name} attacks nasa1`)
+        player1.hull = player1.hull - alien1.firePower
+        console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
+    } 
+}
+let alien4 = {
+    name: "Yellow Star",
+    hull : generateRandomNum(3,6),
+    firePower: generateRandomNum(2,4),
+    accuracy: generateRandomNum(6,8),
+      image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif",
+        everyAlienAttack : function () {
+    console.log("Alien1 attacks Nasa1 ")
+    player1.hull = player1.hull - alien1.firePower
+    console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
+} 
+  }
+   
+let alien5 = {
+    name: "Spinning plate",
+    hull : generateRandomNum(3,6),
+    firePower: generateRandomNum(2,4),
+    accuracy: generateRandomNum(6,8),
+      image : "https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif",
+      everyAlienAttack : function () {
+        console.log("Alien1 attacks Nasa1 ")
+        player1.hull = player1.hull - alien1.firePower
+        console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
+    } 
+    
 }
 
+let alien6 = {
+    name: "Radiator",
+    hull : generateRandomNum(3,6),
+    firePower: generateRandomNum(2,4),
+    accuracy: generateRandomNum(6,8),
+      image : "https://media2.giphy.com/media/RQOUFIDRRG3O9lhLsd/giphy.gif?cid=6c09b952uxvj0rdbidv5rppa6xuud4nhk3j5yzikqyn6ic5h&rid=giphy.gif&ct=s",
+      everyAlienAttack : function () {
+        console.log(`${alienAttacking.name} attacks nasa1`)
+        player1.hull = player1.hull - alien1.firePower
+        console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
+    } 
+}
+// console.log(alien1,alien2,alien3)
 
-// player1.everyPlayerAttack(alien1)
-// alien1.everyAlienAttack(player1)
 
 //   Alien counter //
-let allAliens = [alien1,alien2,alien3]
+let allAliens = [alien1,alien2,alien3,alien4,alien5,alien6]
 let alienAttacking = alien1;
 let counter = 0 //counter starting at zero means the first alien is in battle
  console.log(counter,":Counter")
  console.log(`${alienAttacking.name}`, ":Alien in Battle ")
  console.log("Current Opponent:",alienAttacking)
 
-let battleOn = true
-while (battleOn) {
-    if ( alien1.hull >=1  && alien1.hull <= 6) {
-        player1.everyPlayerAttack(alien1)
-        console.log('Alien dies - Nasa1 wins')
-          console.log('game about to end')
-      } else {
-        console.log('Alien survives - You are being attacked')
-        battleOn = false
-      }     
-}
-
-//*** Switching Aliens when one dies***
-// Write a fxn named switchAlien that reolaces an alein with a new one when it is destroyed ***/
 
 const switchAlien = () => {
-    console.log(" New Alien");
-    let newAlien = document.querySelector(".aliens")
-    let newAlienImg = document.createElement("img");
-    newAlienImg.setAttribute("src",allAliens[counter]);
-    newAlienImg.setAttribute("class","aliens");
-    newAlien.replaceWith(newAlienImg)   
-};
+  alienAttacking = allAliens[counter] 
+  console.log(`%c New Alien is ${alienAttacking.name}`, "color: blue; font-size : 15px");
+  // let newAlien = document.querySelector(".aliens")
+  // let newAlienImg = document.createElement("img");
+  // newAlienImg.setAttribute("src",alienAttacking.image);
+  // newAlienImg.setAttribute("class","aliens");
+  // newAlien.replaceWith(newAlienImg)  
+   let alienShipImg = document.querySelector(".alienShip")
+   alienShipImg.src = alienAttacking.image  
+}; 
+
+
+
+// let battleOn = true
+// while (battleOn) {
+//   if (alienAttacking.hull >=1) {
+
+//     console.log('Alien dies - Nasa1 wins')
+//         counter++
+//         switchAlien()
+//         battleOn = false
+               
+//       } else {
+//         player1.everyPlayerAttack(alienAttacking)
+//         console.log('Alien survives - You are being attacked') 
+//         // console.log('Alien dies - Nasa1 wins')
+//         // counter++
+//         // switchAlien()
+//         // battleOn = false
+//       }     
+// }
+
+
+//*** Switching Aliens when one dies***
+// Write a fxn named switchAlien that replaces an alein with a new one when it is destroyed ***/
+
+
+
+// e.g const determineLifeAlien = () => {
+//   console.log(alienAttacking.hull);
+//   if (alienAttacking.hull <= 0) {
+//     switchAlien();
+//     counter++
+//     alienAttacking = allAliens[counter]
+//     console.log("Current Opponent:",Alien in Battle)
+
+//   } else {
+//     alienAttack()
+//     determineLifeHero()
+//   }
+// };
 
 
 //**** second While loop - for when player1 dies */
- battleOn = true
-while (battleOn) {
-    if ( player1.hull >= 1 && player1.hull <= 20 ) {
-        alien1.everyAlienAttack(player1)
-        console.log('Nasa1 survives')
-      } else {
-        console.log('Nasa1 dies')
-        console.log('game about to end')
-        battleOn = false
-      }     
-}
+//  battleOn = true
+// while (battleOn) {
+//     if ( player1.hull >= 1 && player1.hull <= 20 ) {
+//       alienAttacking.everyAlienAttack(player1)
+//         console.log('Nasa1 survives')
+//         // counter++
+//         switchAlien()
+//       } else {
+//         console.log('Nasa1 dies')
+//         console.log('game about to end')
+//         battleOn = false
+//       }     
+// }
 
 
 
@@ -187,7 +288,7 @@ while (battleOn) {
             console.log(alienAttacking);
             let strike =player1.firepower;
             let alienLife = alienAttacking.hull;
-            let shot = ( alienLife -= power ); //alienattacking life determined by type of shot taken
+            let shot = ( alienLife -= strike ); //alienattacking life determined by type of shot taken
            alienAttacking.hull = shot;
 
             console.log(`${player1.name} shot ${alienAttacking.name} with power of ${power}`);
@@ -195,6 +296,7 @@ while (battleOn) {
             
         }
 
+        
 
 //2. If you survive, you attack the ship again
 // 4.If it survives, it attacks you again ... etc
