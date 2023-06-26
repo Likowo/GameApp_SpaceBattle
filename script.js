@@ -156,11 +156,11 @@ let alien3 = {
     } 
 }
 let alien4 = {
-    name: "Yellow Star",
+    name: "War Jet",
     hull : generateRandomNum(3,6),
     firePower: generateRandomNum(2,4),
     accuracy: generateRandomNum(6,8),
-      image : "https://gifdb.com/images/high/toy-story-alien-antenna-h15mzmarovb8r70b.gif",
+      image : "https://img1.picmix.com/output/stamp/normal/2/2/8/3/593822_5b3d3.gif",
         everyAlienAttack : function () {
     console.log("Alien1 attacks Nasa1 ")
     player1.hull = player1.hull - alien1.firePower
@@ -169,11 +169,11 @@ let alien4 = {
   }
    
 let alien5 = {
-    name: "Spinning plate",
+    name: "360",
     hull : generateRandomNum(3,6),
     firePower: generateRandomNum(2,4),
     accuracy: generateRandomNum(6,8),
-      image : "https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif",
+      image : "https://64.media.tumblr.com/4f76754a423fbf7fa5e08e8e396d5e0a/934e0a7e333333dc-20/s500x750/9d91ecaede9f113295136cc034a7f17fb6c7a9a9.gif",
       everyAlienAttack : function () {
         console.log("Alien1 attacks Nasa1 ")
         player1.hull = player1.hull - alien1.firePower
@@ -183,15 +183,15 @@ let alien5 = {
 }
 
 let alien6 = {
-    name: "Radiator",
+    name: "Blaze",
     hull : generateRandomNum(3,6),
     firePower: generateRandomNum(2,4),
     accuracy: generateRandomNum(6,8),
-      image : "https://media2.giphy.com/media/RQOUFIDRRG3O9lhLsd/giphy.gif?cid=6c09b952uxvj0rdbidv5rppa6xuud4nhk3j5yzikqyn6ic5h&rid=giphy.gif&ct=s",
+      image : "https://media.tenor.com/EkafvVUBJn0AAAAC/ufo.gif",
       everyAlienAttack : function () {
         console.log(`${alienAttacking.name} attacks nasa1`)
         player1.hull = player1.hull - alien1.firePower
-        console.log(`${player1.name}  hull is,${player1.hull}   ; ${player1.name} survives`)
+        console.log(`${player1.name}  hull is,${player1.hull}; ${player1.name} survives`)
     } 
 }
 // console.log(alien1,alien2,alien3)

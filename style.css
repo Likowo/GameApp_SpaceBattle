@@ -12,7 +12,7 @@ body {
 }
 
 .uSSAssembly{
-    border: solid 3px red;
+    /* border: solid 2px red; */
     border-radius: 50%;
     height: 120px;;
     width: 120px;
